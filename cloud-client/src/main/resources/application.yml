@@ -14,7 +14,7 @@ eureka:
 
 
 
-  #配置mq
+  #配置mq test
   rabbitmq:
     host: localhost
     port: 5672
