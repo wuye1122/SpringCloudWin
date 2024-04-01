@@ -1,0 +1,60 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: gateway
+server:
+  port: 8081
+
+
+
+
+
+
+
+#Bug 1 访问zuul之后显示500
+#版本冲突 zuul springboot cloud需要同时满足
+# 分别 springboot版本修改为：2.4.8
+# spring cloud版本修改为：2020.0.4
+# zuul版本没有修改：2.2.10.RELEASE
+
+#Bug 1 访问zuul之后显示500   Load balancer does not have available server for client: eureka
+#Spring Cloud 2021.0.1 移除了Hystrix、Zuul等Netflix组件
+#请更换成以下的配置  要换的话肯定是版本统一的呀 你在想什么？
+#<spring-boot.version>2.4.8</spring-boot.version>
+#<spring-cloud.version>2020.0.4</spring-cloud.version>
+
+
+#Bug 我的client命名为zuul 傻叉
+# {NFLoadBalancer:name=client,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+
+#zuul:
+#  routes:
+#    test11:
+#      path: /z/**
+#      service-id: test11
+#      url: http://localhost:8082/
+#    z:
+#      path:  /e/**
+#      service-id: EUREKA
+#      url: http://localhost:8761/
+      #4/1 刚刚从德胜新村回来 通过url可以成功啦 http://localhost:8082/z/a
+      # 大哥端口你这个不是8081呀 还是没有转发成功
+
+
+zuul:
+  routes:
+    product: /p/**
+    eureka: /e/**
+     # /p/ 代表一种规则
+
+management:
+  security:
+    enabled: false
+
+logging:
+  level:
+    com:
+      netflix: debug
