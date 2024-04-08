@@ -1,5 +1,25 @@
 # Getting Started
 
+
+
+# api-gateway
+
+api-gateway
+http://localhost:8081/application/routes
+EUREKA:
+http://localhost:8761/e/a 
+
+PRODUCT:  
+http://localhost:8082/z/a
+http://localhost:8082/z/b
+
+test:
+http://localhost:8081/p/z/a
+http://localhost:8081/p/z/b
+http://localhost:8081/eureka/e/a
+
+
+
 ### Reference Documentation
 
 For further reference, please consider the following sections:
